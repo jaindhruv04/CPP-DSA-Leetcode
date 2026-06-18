@@ -1,21 +1,24 @@
-class Solution {
-public:
-    ListNode* reverseList(ListNode* head) {
+#include <iostream>
+#include <node.h>
+using namespace std;
 
-        ListNode* prev = NULL;
-        ListNode* curr = head;
+node *reverseList(node *head)
+{
 
-        while (curr != NULL) {
+    node *prev = NULL;
+    node *curr = head;
 
-            ListNode* next = curr->next;
+    while (curr != NULL)
+    {
 
-            curr->next = prev;
+        node *next = curr->next;
 
-            prev = curr;
+        curr->next = prev;
 
-            curr = next;
-        }
+        prev = curr;
 
-        return prev;
+        curr = next;
     }
-};
+
+    return prev;
+}
