@@ -8,19 +8,22 @@ public:
         }
 
         vector<int> ans;
+        vector<pair<int, int>> freq;
 
-        while (k != 0) {
-            int element = mp.begin()->first;
+        for (auto i : mp) {
+            freq.push_back({i.first, i.second});
+        }
 
-            for (auto p : mp) {
-                if (p.second > mp[element]) {
-                    element = p.first;
+        for (int i = 0; i < freq.size(); i++) {
+            for (int j = i + 1; j < freq.size(); j++) {
+                if (freq[j].second > freq[i].second) {
+                    swap(freq[i], freq[j]);
                 }
             }
+        }
 
-            ans.push_back(element);
-            mp.erase(element);
-            k--;
+        for (int i = 0; i < k; i++) {
+            ans.push_back(freq[i].first);
         }
 
         return ans;
